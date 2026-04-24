@@ -2,12 +2,13 @@ name: Release Multi-Plateforme
 on:
   push:
     tags:
-      - 'v*' # Se déclenche quand tu crées un tag genre v1.0.2
+      - 'v*'
 
 jobs:
   release:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false # TRÈS IMPORTANT : Si Linux plante, Windows et Mac finissent quand même
       matrix:
         os: [windows-latest, macos-latest, ubuntu-latest]
 
@@ -18,9 +19,12 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22 # On passe à la version stable actuelle
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Build & Publish
-        run: npm install && npm run dist
+        run: npm run dist
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
