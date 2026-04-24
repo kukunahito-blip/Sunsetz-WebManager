@@ -13,10 +13,12 @@ jobs:
         os: [windows-latest, macos-latest, ubuntu-latest]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        # Utiliser la version de développement qui supporte Node 24+
+        uses: actions/checkout@v4.2.2 
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        # Utiliser la version qui intègre déjà les correctifs pour Node 24
+        uses: actions/setup-node@v4.1.0
         with:
           node-version: 22
 
