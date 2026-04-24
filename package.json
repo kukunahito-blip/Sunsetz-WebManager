@@ -3,7 +3,7 @@
   "version": "1.0.6",
   "description": "Adaptation of Sunsetz filebrowser in an app",
   "license": "ISC",
-  "author": "Hitokuna",
+  "author": "Hitokuna <kukunahito@gmail.com>",
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
@@ -42,6 +42,7 @@
         "AppImage",
         "deb"
       ],
+      "maintainer": "kukunahito@gmail.com",
       "icon": "assets/sunsetz-logo.png"
     },
     "nsis": {
