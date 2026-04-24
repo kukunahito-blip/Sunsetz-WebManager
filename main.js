@@ -104,6 +104,7 @@ ipcMain.on('open-server', (event, url) => {
         webPreferences: { contextIsolation: true, nodeIntegration: false }
     });
     win.loadURL(url);
+    win.removeMenu();
     win.webContents.on('did-finish-load', () => { win.webContents.insertCSS(customCSS); });
 });
 
