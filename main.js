@@ -48,6 +48,7 @@ function createConfigWindow() {
     });
     configWindow.removeMenu();
     configWindow.loadFile('index.html');
+    configWindow.on('new-window', (e) => e.preventDefault());
 }
 
 // --- IPC HANDLERS (Gestion des données & Ping) ---
@@ -58,7 +59,7 @@ ipcMain.handle('get-sites', () => {
     catch (e) { return []; }
 });
 
-// Ton système de vérification "Ping" originel pour valider l'URL
+// --- Système de vérification "Ping" originel pour valider l'URL
 ipcMain.handle('verify-and-save-site', async (event, site) => {
     return new Promise((resolve) => {
         const request = net.request({ method: 'GET', url: site.url, redirect: 'follow' });
