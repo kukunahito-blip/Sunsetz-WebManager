@@ -1,0 +1,65 @@
+{
+  "name": "sunsetz-webmanager",
+  "version": "1.0.1",
+  "description": "Adaptation of Sunsetz filebrowser in an app",
+  "license": "ISC",
+  "author": "Hitokuna",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.sunsetz.webmanager",
+    "productName": "WebManager-App",
+    "files": [
+      "**/*",
+      "assets/sunsetz-logo.png"
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "kukunahito-blip",
+        "repo": "Sunsetz-WebManager",
+        "releaseType": "release"
+      }
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/sunsetz-logo.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/sunsetz-logo.icns"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "assets/sunsetz-logo.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
+    }
+  },
+  "devDependencies": {
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0"
+  },
+  "dependencies": {
+    "electron-log": "^5.4.3",
+    "electron-updater": "^6.7.3",
+    "electron-version": "^2.0.1"
+  }
+}

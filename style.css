@@ -1,0 +1,237 @@
+body {
+    background-color: #1b262c;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    margin-top: 14%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logo-circle img {
+    width: 75px;
+    height: 75px;
+}
+
+h1 { font-size: 1.4rem; margin: 0; }
+
+.add-form {
+    background: rgba(255,255,255,0.03);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 30px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #25333d;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input:focus {
+    outline: 1px solid #af4747e8;
+}
+
+button#addBtn {
+    width: 100%;
+    padding: 10px;
+    background: #d65050;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button#addBtn:hover {
+    background: #d65050ce;
+}
+
+.sites-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.site-item {
+    background: #25333d;
+    padding: 15px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid #d65050;
+    transition: transform 0.1s;
+}
+
+.site-item:hover {
+    transform: translateX(5px);
+}
+
+.site-info {
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.site-info b {
+    display: block;
+    color: #d65050;
+    font-size: 1.1rem;
+}
+.site-info span {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    word-break: break-all;
+}
+
+.delete-btn {
+    background: #995ac5;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background: #995ac5ce;
+}
+
+/* Overlay qui couvre tout l'écran */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; /* Caché par défaut */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #1b262c;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.modal-box h3 {
+    margin-top: 0;
+    color: #d65050;
+}
+.modal-box p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    background: #334155;
+    color: white;
+}
+.btn-secondary:hover {
+    background: #334155ce;
+    color: white;
+    cursor: pointer;
+}
+.btn-danger {
+    background: #995ac5;
+    color: white;
+}
+.btn-danger:hover {
+    background: #995ac5ce;
+    color: white;
+    cursor: pointer;
+}
+
+/* État de base : invisible et prend 0 place */
+.error-text {
+    color: #b57edc;
+    text-align: center;
+    font-size: 0.85rem;
+    overflow: hidden;
+    
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    
+    /* On anime tout d'un coup pour éviter les sauts de bordure */
+    transition: all 0.2s ease-in-out;
+}
+
+/* L'état quand le message est affiché */
+.error-text.visible {
+    max-height: 50px; /* On laisse un peu de marge */
+    margin-top: 10px;
+    opacity: 1;
+}
+
+/* L'état de sortie (identique à la base pour boucler l'effet) */
+.error-text.slide-out {
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+    }
+::-webkit-scrollbar-track {
+    background: #172227;
+    }
+::-webkit-scrollbar-thumb {
+    background: #20292f;
+    border-radius: 6px;
+    border: 3px solid #1e2227;
+    }
+::-webkit-scrollbar-thumb:hover {
+    background: #c24c4cd7;
+    cursor: pointer;
+    }
