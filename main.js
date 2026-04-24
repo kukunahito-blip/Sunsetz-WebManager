@@ -36,7 +36,6 @@ function createConfigWindow() {
         height: 680,
         resizable: false,
         fullscreenable: false,
-        MenuBar: false,
         icon: path.join(__dirname, 'assets', 'sunsetz-logo.png'),
 
         webPreferences: {
