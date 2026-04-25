@@ -6,35 +6,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo-circle">
-                <img src="assets/sunsetz-logo.png" alt="Logo">
-            </div>
-            <h1>Sunsetz WebManager</h1>
-        </div>
-
-        <div class="add-form">
-            <input type="text" id="nameInput" placeholder="Nom du site (ex: Interface NAS)">
-            <input type="text" id="urlInput" placeholder="URL (ex: https://mon-site.com)">
-            <button id="addBtn">Ajouter le site</button>
-        </div>
-
-        <div id="sitesList" class="sites-list">
-            </div>
-    </div>
-
-    <div id="customModal" class="modal-overlay">
-        <div class="modal-box">
-            <h3 id="modalTitle">Confirmation</h3>
-            <p id="modalMessage">Voulez-vous vraiment supprimer ce site ?</p>
-            <div class="modal-buttons">
-                <button id="modalCancel" class="btn-secondary">Annuler</button>
-                <button id="modalConfirm" class="btn-danger">Supprimer</button>
-            </div>
+    <div class="loading-screen">
+        <div class="spinner">
+            <img src="/assets/vv.png" alt="WebManager Logo">
+            <span>Sunsetz WebManager</span>
         </div>
     </div>
+    <div class="app-container">
+        <div class="container">
+            <div class="header">
+                <div class="logo-circle">
+                    <img src="assets/icon.png" alt="Logo">
+                </div>
+                <h1>Sunsetz WebManager</h1>
+            </div>
 
+            <div class="add-form">
+                <input type="text" id="nameInput" placeholder="Nom du site (ex: Interface NAS)">
+                <input type="text" id="urlInput" placeholder="URL (ex: https://mon-site.com)">
+                <button id="addBtn">Ajouter le site</button>
+            </div>
+
+            <div id="sitesList" class="sites-list">
+            </div>
+        </div>
+
+        <div id="customModal" class="modal-overlay">
+            <div class="modal-box">
+                <h3 id="modalTitle">Confirmation</h3>
+                <p id="modalMessage">Voulez-vous vraiment supprimer ce site ?</p>
+                <div class="modal-buttons">
+                    <button id="modalCancel" class="btn-secondary">Annuler</button>
+                    <button id="modalConfirm" class="btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="renderer.js"></script>
 </body>
 </html>

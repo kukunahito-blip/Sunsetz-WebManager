@@ -16,7 +16,7 @@
     "productName": "WebManager-App",
     "files": [
       "**/*",
-      "assets/sunsetz-logo.png"
+      "assets/icon.png"
     ],
     "publish": [
       {
@@ -31,11 +31,11 @@
         "nsis",
         "portable"
       ],
-      "icon": "assets/sunsetz-logo.ico"
+      "icon": "assets/icon.ico"
     },
     "mac": {
       "target": "dmg",
-      "icon": "assets/sunsetz-logo.icns"
+      "icon": "assets/icon.icns"
     },
     "linux": {
       "target": [
@@ -43,7 +43,7 @@
         "deb"
       ],
       "maintainer": "kukunahito@gmail.com",
-      "icon": "assets/sunsetz-logo.png"
+      "icon": "assets/icon.png"
     },
     "nsis": {
       "oneClick": false,

@@ -36,7 +36,7 @@ function createConfigWindow() {
         height: 680,
         resizable: false,
         fullscreenable: false,
-        icon: path.join(__dirname, 'assets', 'sunsetz-logo.png'),
+        icon: path.join(__dirname, 'assets', 'icon.png'),
 
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
@@ -99,7 +99,7 @@ ipcMain.handle('delete-site', (event, index) => {
 ipcMain.on('open-server', (event, url) => {
     const win = new BrowserWindow({
         width: 1100, height: 800,
-        icon: path.join(__dirname, 'assets', 'sunsetz-logo.png'),
+        icon: path.join(__dirname, 'assets', 'icon.png'),
         autoHideMenuBar: true,
         webPreferences: { contextIsolation: true, nodeIntegration: false }
     });
