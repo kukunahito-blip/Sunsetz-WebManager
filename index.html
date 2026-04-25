@@ -2,46 +2,27 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Sunsetz WebManager</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
+
 <body>
-    <div class="loading-screen">
-        <div class="spinner">
-            <img src="/assets/vv.png" alt="WebManager Logo">
-            <span>Sunsetz WebManager</span>
+    <section id="titlebar">
+        <div id="titlebar_details">
+            <img src="assets/sunsetz/sunsetz-logo.png" alt="WebManager Icon" id="app_icon">
+            <span>
+                Sunsetz WebManager
+            </span>
         </div>
-    </div>
-    <div class="app-container">
-        <div class="container">
-            <div class="header">
-                <div class="logo-circle">
-                    <img src="assets/icon.png" alt="Logo">
-                </div>
-                <h1>Sunsetz WebManager</h1>
-            </div>
-
-            <div class="add-form">
-                <input type="text" id="nameInput" placeholder="Nom du site (ex: Interface NAS)">
-                <input type="text" id="urlInput" placeholder="URL (ex: https://mon-site.com)">
-                <button id="addBtn">Ajouter le site</button>
-            </div>
-
-            <div id="sitesList" class="sites-list">
-            </div>
+        <div id="titlebar_buttons">
+            <button onclick="electronAPI.window.minimize()">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button id="close_window" onclick="electronAPI.window.close()">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-
-        <div id="customModal" class="modal-overlay">
-            <div class="modal-box">
-                <h3 id="modalTitle">Confirmation</h3>
-                <p id="modalMessage">Voulez-vous vraiment supprimer ce site ?</p>
-                <div class="modal-buttons">
-                    <button id="modalCancel" class="btn-secondary">Annuler</button>
-                    <button id="modalConfirm" class="btn-danger">Supprimer</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
     <script src="renderer.js"></script>
 </body>
 </html>

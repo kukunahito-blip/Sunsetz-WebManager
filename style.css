@@ -1,17 +1,155 @@
+/* Utility Classes */
+.icons {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.btn {
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:focus {
+    outline: 2px solid #ffc9c9e8;
+}
+
+@import url("https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css");
+
+section#titlebar {
+    user-select: none;
+    overflow: hidden;
+    position: fixed;
+    z-index: 10000;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 25px;
+    background-color: var(--titlebar-background-color, #172025ef);
+    backdrop-filter: blur(10px);
+    -webkit-app-region: drag;
+}
+
+section#titlebar > * {
+    display: inline-block;
+}
+
+section#titlebar > div#titlebar_details > span {
+    line-height: 25px;
+    color: var(--text-color);
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+section#titlebar > div#titlebar_details > img {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+section#titlebar > div#titlebar_buttons {
+    float: right;
+    margin-right: 2px;
+    -webkit-app-region: no-drag;
+}
+
+section#titlebar > div#titlebar_buttons > button {
+    color: var(--text-color);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 22px;
+    transition: .3s;
+}
+
+section#titlebar > div#titlebar_buttons > button > i {
+    margin-top: 6px;
+}
+
+section#titlebar > div#titlebar_buttons > button:hover {
+    background-color: #8282827c;
+}
+
+section#titlebar > div#titlebar_buttons > button#close_window:hover {
+    background-color: #d65050;
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a252b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+#loading-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner img {
+    width: 120px;
+    height: 120px;
+    margin: 0;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+#loading-screen span {
+    margin-top: 20px;
+    color: white;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
 body {
     background-color: #1b262c;
     color: white;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     margin: 0;
-    margin-top: 14%;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    padding: 0;
+    overflow: hidden;
+}
+
+.logo-big {
+    width: 100px;
+    height: 100px;
 }
 
 .container {
     width: 100%;
     max-width: 450px;
+    margin-top: 10vh;
+    padding: 20px;
+    padding-bottom: 50px;
 }
 
 .header {
@@ -20,8 +158,8 @@ body {
 }
 
 .logo-circle {
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin: 0 auto 10px;
     display: flex;
@@ -31,8 +169,8 @@ body {
 }
 
 .logo-circle img {
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 100px;
 }
 
 h1 { font-size: 1.4rem; margin: 0; }
@@ -126,13 +264,12 @@ button#addBtn:hover {
     background: #995ac5ce;
 }
 
-/* Overlay qui couvre tout l'écran */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    display: none; /* Caché par défaut */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -191,7 +328,6 @@ button#addBtn:hover {
     cursor: pointer;
 }
 
-/* État de base : invisible et prend 0 place */
 .error-text {
     color: #b57edc;
     text-align: center;
@@ -201,37 +337,50 @@ button#addBtn:hover {
     max-height: 0;
     margin-top: 0;
     opacity: 0;
-    
-    /* On anime tout d'un coup pour éviter les sauts de bordure */
     transition: all 0.2s ease-in-out;
 }
 
-/* L'état quand le message est affiché */
 .error-text.visible {
-    max-height: 50px; /* On laisse un peu de marge */
+    max-height: 50px;
     margin-top: 10px;
     opacity: 1;
 }
 
-/* L'état de sortie (identique à la base pour boucler l'effet) */
 .error-text.slide-out {
     max-height: 0;
     margin-top: 0;
     opacity: 0;
 }
 
-::-webkit-scrollbar {
-    width: 13px;
+.no-selection {
+    user-select: none;
+}
+
+section#app-container {
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+section#app-container::-webkit-scrollbar {
+    width: 12px;
     }
-::-webkit-scrollbar-track {
-    background: #172227;
+section#app-container::-webkit-scrollbar-track {
+    margin-top: 24px;
+    background: #1722278a;
     }
-::-webkit-scrollbar-thumb {
+section#app-container::-webkit-scrollbar-thumb {
     background: #20292f;
     border-radius: 6px;
     border: 3px solid #1e2227;
     }
-::-webkit-scrollbar-thumb:hover {
-    background: #c24c4cd7;
+section#app-container::-webkit-scrollbar-thumb:hover {
+    background: #c24c4cea;
+    border-radius: 6px;
+    border: 3px solid #1e2227;
     cursor: pointer;
     }

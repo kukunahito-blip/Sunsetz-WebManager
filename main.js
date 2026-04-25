@@ -4,7 +4,7 @@ const fs = require('fs');
 const { autoUpdater } = require('electron-updater');
 const log = require('electron-log');
 
-// --- SYSTÈME DE MISE À JOUR ORIGINEL ---
+// --- SYSTÈME DE MISE À JOUR ---
 autoUpdater.logger = log;
 autoUpdater.logger.transports.file.level = 'info';
 autoUpdater.autoDownload = true;
@@ -33,16 +33,17 @@ const customCSS = `
 function createConfigWindow() {
     configWindow = new BrowserWindow({
         width: 500,
-        height: 680,
+        height: 650,
         resizable: false,
-        fullscreenable: false,
+        titleBarStyle: 'hidden',
+        devTools: true,
         icon: path.join(__dirname, 'assets', 'icon.png'),
 
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             contextIsolation: true,
             nodeIntegration: false
-        }
+        },
     });
     configWindow.removeMenu();
     configWindow.loadFile('index.html');
@@ -57,35 +58,56 @@ ipcMain.handle('get-sites', () => {
     catch (e) { return []; }
 });
 
-// --- Système de vérification "Ping" originel pour valider l'URL
+// --- SYSTÈME DE VÉRIFICATION & SAUVEGARDE (Ping avant d'ajouter) ---
 ipcMain.handle('verify-and-save-site', async (event, site) => {
     return new Promise((resolve) => {
-        const request = net.request({ method: 'GET', url: site.url, redirect: 'follow' });
-        
-        // Sécurité timeout de 5 secondes
-        const timeout = setTimeout(() => {
-            request.abort();
-            resolve({ success: false });
-        }, 5000);
-
-        request.on('response', (response) => {
-            clearTimeout(timeout);
-            if (response.statusCode >= 200 && response.statusCode < 400) {
-                let sites = [];
-                if (fs.existsSync(sitesPath)) sites = JSON.parse(fs.readFileSync(sitesPath, 'utf8'));
-                sites.push(site);
-                fs.writeFileSync(sitesPath, JSON.stringify(sites, null, 2));
-                resolve({ success: true });
-            } else {
+        try {
+            const request = net.request({ method: 'GET', url: site.url, redirect: 'follow' });
+            
+            const timeout = setTimeout(() => {
+                request.abort();
                 resolve({ success: false });
-            }
-        });
+            }, 5000);
 
-        request.on('error', () => {
-            clearTimeout(timeout);
+            request.on('response', (response) => {
+                clearTimeout(timeout);
+                
+                response.on('data', () => {}); 
+                
+                response.on('end', () => {
+                    if (response.statusCode >= 200 && response.statusCode < 400) {
+                        try {
+                            let sites = [];
+                            if (fs.existsSync(sitesPath)) {
+                                const fileContent = fs.readFileSync(sitesPath, 'utf8');
+                                if (fileContent.trim() !== '') {
+                                    sites = JSON.parse(fileContent);
+                                }
+                            }
+                            sites.push(site);
+                            fs.writeFileSync(sitesPath, JSON.stringify(sites, null, 2));
+                            resolve({ success: true });
+                        } catch (err) {
+                            console.error("Erreur d'écriture JSON :", err);
+                            resolve({ success: false });
+                        }
+                    } else {
+                        resolve({ success: false });
+                    }
+                });
+            });
+
+            request.on('error', (err) => {
+                clearTimeout(timeout);
+                resolve({ success: false });
+            });
+            
+            request.end();
+
+        } catch (err) {
+            console.error("Erreur critique net.request :", err);
             resolve({ success: false });
-        });
-        request.end();
+        }
     });
 });
 
@@ -108,10 +130,21 @@ ipcMain.on('open-server', (event, url) => {
     win.webContents.on('did-finish-load', () => { win.webContents.insertCSS(customCSS); });
 });
 
+ipcMain.on("action", async (event, data) => {
+    const win = BrowserWindow.getFocusedWindow();
+    switch (data.type) {
+        case "window::close":
+            app.exit(0)
+            break
+        case "window::minimize":
+            win.minimize()
+            break
+    }
+});
 // --- CYCLE DE VIE (Support Mac/Linux/Win) ---
 app.whenReady().then(() => {
     createConfigWindow();
-    autoUpdater.checkForUpdatesAndNotify(); // Lancement des MAJ
+    autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on("window-all-closed", () => {
