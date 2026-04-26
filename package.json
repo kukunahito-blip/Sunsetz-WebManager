@@ -1,6 +1,6 @@
 {
   "name": "sunsetz-webmanager",
-  "version": "1.2.101",
+  "version": "1.2.102",
   "description": "Adaptation of Sunsetz filebrowser in an app",
   "license": "ISC",
   "author": "Hitokuna <kukunahito@gmail.com>",
@@ -9,14 +9,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electronmon .",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "version:bump": "npm version patch -m \"Build: release %s\"",
+    "publish:draft": "git add . && npm version patch --force -m \"Build: release %s\" && git push origin main --follow-tags && for /f \"tokens=*\" %a in ('node -p \"require('./package.json').version\"') do gh release create v%a --draft --generate-notes",
+    "publish:final": "git add . && npm version patch --force -m \"Build: release %s\" && git push origin main --follow-tags && for /f \"tokens=*\" %a in ('node -p \"require('./package.json').version\"') do gh release create v%a --generate-notes"
   },
   "build": {
     "appId": "com.sunsetz.webmanager",
     "productName": "WebManager-App",
     "files": [
-    "**/*", 
-    "!build/*"
+      "**/*",
+      "!build/*"
     ],
     "asar": true,
     "publish": [

@@ -1,8 +1,9 @@
 name: Release
+
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*' # C'est ce "v*" qui surveille les tags créés par npm version
 
 jobs:
   build:
