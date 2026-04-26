@@ -15,8 +15,10 @@
     "appId": "com.sunsetz.webmanager",
     "productName": "WebManager-App",
     "files": [
-      "**/*",
-      "assets/icon.png"
+      "**/*", 
+      "!**/node_modules/*/{CHANGELOG.md,README.md,test,obj,bin}",
+      "!**/*.{log,txt,md}",
+      "!build/*"
     ],
     "publish": [
       {
