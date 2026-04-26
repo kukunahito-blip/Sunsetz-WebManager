@@ -10,6 +10,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
     window: {
         close: () => ipcRenderer.send("action", { type: "window::close" }),
-        minimize: () => ipcRenderer.send("action", { type: "window::minimize" }),
+        minimize: () => ipcRenderer.send("action", { type: "window::minimize" })
     },
 });

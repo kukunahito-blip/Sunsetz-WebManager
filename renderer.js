@@ -158,7 +158,7 @@ function showAppContainer() {
     appContainer.innerHTML = `
         <div class="container">
             <div class="no-selection header">
-                <div class="no-selection logo-circle"><img src="assets/icon.png" alt="Logo"></div>
+                <div class="logo-circle"><img class = "no-selection" src="assets/icon.png" alt="Logo"></div>
                 <h1>Sunsetz WebManager</h1>
             </div>
             <div class="add-form">
@@ -182,4 +182,6 @@ function showAppContainer() {
     document.body.appendChild(appContainer);
 }
 
-document.addEventListener('DOMContentLoaded', initApp);
+document.addEventListener('DOMContentLoaded', () => {
+    initApp();
+});

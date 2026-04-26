@@ -35,7 +35,7 @@ function createConfigWindow() {
         width: 500,
         height: 650,
         resizable: false,
-        titleBarStyle: 'hidden',
+        frame: false,
         devTools: true,
         icon: path.join(__dirname, 'assets', 'icon.png'),
 
@@ -47,7 +47,10 @@ function createConfigWindow() {
     });
     configWindow.removeMenu();
     configWindow.loadFile('index.html');
-    configWindow.on('new-window', (e) => e.preventDefault());
+    // La norme actuelle
+    configWindow.webContents.setWindowOpenHandler((details) => {
+        return { action: 'deny' }; 
+    });
 }
 
 // --- IPC HANDLERS (Gestion des données & Ping) ---
