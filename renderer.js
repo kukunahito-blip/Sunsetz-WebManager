@@ -41,7 +41,7 @@ function loadingScreen() {
         loader.innerHTML = `
             <div class="loader-content">
                 <div class="spinner">
-                    <img class="logo-big" src="assets/sunsetz-logo.png" alt="Logo">
+                    <img class="logo-big" src="assets/sunsetz/sunsetz-logo.png" alt="Logo">
                 </div>
                 <span>Sunsetz WebManager</span>
             </div>

@@ -15,22 +15,10 @@
     "appId": "com.sunsetz.webmanager",
     "productName": "WebManager-App",
     "files": [
-      "**/*", 
-      "!**/node_modules/*/{CHANGELOG.md,README.md,test,obj,bin}",
-      "!**/*.{log,txt,md}",
-      "!build/*"
-    ],
-    "extraResources": [
-    {
-      "from": "assets/",
-      "to": "assets/",
-      "filter": ["**/*"]
-    }
+    "**/*", 
+    "!build/*"
     ],
     "asar": true,
-    "asarUnpack": [
-      "assets/**/*"
-    ],
     "publish": [
       {
         "provider": "github",
