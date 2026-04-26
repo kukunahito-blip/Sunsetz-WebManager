@@ -1,6 +1,6 @@
 {
   "name": "sunsetz-webmanager",
-  "version": "1.2.102",
+  "version": "1.2.103",
   "description": "Adaptation of Sunsetz filebrowser in an app",
   "license": "ISC",
   "author": "Hitokuna <kukunahito@gmail.com>",
@@ -10,9 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electronmon .",
     "dist": "electron-builder",
-    "version:bump": "npm version patch -m \"Build: release %s\"",
-    "publish:draft": "git add . && npm version patch --force -m \"Build: release %s\" && git push origin main --follow-tags && for /f \"tokens=*\" %a in ('node -p \"require('./package.json').version\"') do gh release create v%a --draft --generate-notes",
-    "publish:final": "git add . && npm version patch --force -m \"Build: release %s\" && git push origin main --follow-tags && for /f \"tokens=*\" %a in ('node -p \"require('./package.json').version\"') do gh release create v%a --generate-notes"
+    "publish:patch": "git add . && npm version patch --force -m \"Build: patch %s\" && git push origin main --follow-tags",
+    "publish:minor": "git add . && npm version minor --force -m \"Build: minor %s\" && git push origin main --follow-tags",
+    "publish:major": "git add . && npm version major --force -m \"Build: major %s\" && git push origin main --follow-tags"
   },
   "build": {
     "appId": "com.sunsetz.webmanager",
@@ -27,7 +27,7 @@
         "provider": "github",
         "owner": "kukunahito-blip",
         "repo": "Sunsetz-WebManager",
-        "releaseType": "release"
+        "releaseType": "draft"
       }
     ],
     "win": {
