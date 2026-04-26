@@ -20,6 +20,17 @@
       "!**/*.{log,txt,md}",
       "!build/*"
     ],
+    "extraResources": [
+    {
+      "from": "assets/",
+      "to": "assets/",
+      "filter": ["**/*"]
+    }
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "assets/**/*"
+    ],
     "publish": [
       {
         "provider": "github",
