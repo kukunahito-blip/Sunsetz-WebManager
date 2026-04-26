@@ -1,6 +1,6 @@
 {
   "name": "sunsetz-webmanager",
-  "version": "1.2.104",
+  "version": "1.2.105",
   "description": "Adaptation of Sunsetz filebrowser in an app",
   "license": "ISC",
   "author": "Hitokuna <kukunahito@gmail.com>",
@@ -19,7 +19,7 @@
     "productName": "WebManager-App",
     "files": [
       "**/*",
-      "!build/*"
+      "assets/**/*"
     ],
     "publish": [
       {
