@@ -1,6 +1,6 @@
 {
   "name": "sunsetz-webmanager",
-  "version": "1.2.105",
+  "version": "1.3.0",
   "description": "Adaptation of Sunsetz filebrowser in an app",
   "license": "ISC",
   "author": "Hitokuna <kukunahito@gmail.com>",
@@ -34,11 +34,11 @@
         "nsis",
         "portable"
       ],
-      "icon": "assets/icon.ico"
+      "icon": "build/icon.ico"
     },
     "mac": {
       "target": "dmg",
-      "icon": "assets/icon.icns"
+      "icon": "build/icon.icns"
     },
     "linux": {
       "target": [
@@ -46,14 +46,14 @@
         "deb"
       ],
       "maintainer": "kukunahito@gmail.com",
-      "icon": "assets/icon.png"
+      "icon": "build/icon.png"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     },
     "directories": {
-      "buildResources": "assets",
+      "buildResources": "build",
       "output": "dist"
     }
   },

@@ -1,3 +1,6 @@
+/* Imports */
+@import url("https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css");
+
 /* Utility Classes */
 .no-selection {
     user-select: none;
@@ -15,17 +18,24 @@
 }
 
 .btn {
+    outline: none;
     display: inline-block;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .btn:focus {
-    outline: 2px solid #ffc9c9e8;
+    outline: 2px solid #bea2b0e8;
 }
 
-@import url("https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css");
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
 
+/* TItlebar */
 section#titlebar {
     user-select: none;
     overflow: hidden;
@@ -36,7 +46,7 @@ section#titlebar {
     right: 0px;
     height: 25px;
     background-color: var(--titlebar-background-color, #172025ef);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     -webkit-app-region: drag;
 }
 
@@ -92,6 +102,7 @@ section#titlebar > div#titlebar_buttons > button#close_window:hover {
     background-color: #d65050;
 }
 
+/* Loading Screen */
 #loading-screen {
     position: fixed;
     top: 0;
@@ -112,6 +123,15 @@ section#titlebar > div#titlebar_buttons > button#close_window:hover {
     pointer-events: none;
 }
 
+#loading-screen span {
+    margin-top: 20px;
+    color: white;
+    font-family: sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
 .loader-content {
     display: flex;
     flex-direction: column;
@@ -126,19 +146,37 @@ section#titlebar > div#titlebar_buttons > button#close_window:hover {
     animation: pulse 1.5s infinite ease-in-out;
 }
 
-@keyframes pulse {
-    0% { transform: scale(0.95); opacity: 0.8; }
-    50% { transform: scale(1.05); opacity: 1; }
-    100% { transform: scale(0.95); opacity: 0.8; }
-}
+/* Main App */
+/* Custom Scrollbar */
+section#app-container::-webkit-scrollbar {
+    width: 12px;
+    }
+section#app-container::-webkit-scrollbar-track {
+    margin-top: 24px;
+    background: #1722278a;
+    }
+section#app-container::-webkit-scrollbar-thumb {
+    background: #20292f;
+    border-radius: 6px;
+    border: 3px solid #1e2227;
+    }
+section#app-container::-webkit-scrollbar-thumb:hover {
+    background: #c24c4cea;
+    border-radius: 6px;
+    border: 3px solid #1e2227;
+    cursor: pointer;
+    }
 
-#loading-screen span {
-    margin-top: 20px;
-    color: white;
-    font-family: sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 0.9rem;
+/* Global Styles */
+
+section#app-container {
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 body {
@@ -203,9 +241,11 @@ input {
     color: white;
     border-radius: 4px;
     box-sizing: border-box;
+    transition: border-color 0.18s;
 }
 input:focus {
-    outline: 1px solid #af4747e8;
+    outline: none;
+    border-color: #d65050;
 }
 
 button#addBtn {
@@ -275,6 +315,7 @@ button#addBtn:hover {
     background: #995ac5ce;
 }
 
+/* Modal */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -339,6 +380,7 @@ button#addBtn:hover {
     cursor: pointer;
 }
 
+/* Error Message */
 .error-text {
     color: #b57edc;
     text-align: center;
@@ -362,32 +404,3 @@ button#addBtn:hover {
     margin-top: 0;
     opacity: 0;
 }
-
-section#app-container {
-    height: 100vh;
-    width: 100vw;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-section#app-container::-webkit-scrollbar {
-    width: 12px;
-    }
-section#app-container::-webkit-scrollbar-track {
-    margin-top: 24px;
-    background: #1722278a;
-    }
-section#app-container::-webkit-scrollbar-thumb {
-    background: #20292f;
-    border-radius: 6px;
-    border: 3px solid #1e2227;
-    }
-section#app-container::-webkit-scrollbar-thumb:hover {
-    background: #c24c4cea;
-    border-radius: 6px;
-    border: 3px solid #1e2227;
-    cursor: pointer;
-    }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body { margin: 0; height: 100vh; overflow: hidden; background: #141d22; }
+        section#titlebar { position: relative; width: 100%; background-color: var(--titlebar-background-color, #172025ef); }
+    </style>
+</head>
+<body>
+    <section id="titlebar">
+        <div id="titlebar_details">
+            <img src="assets/sunsetz/sunsetz-logo.png" alt="Icon" id="app_icon">
+            <span id="dynamic-title">Chargement...</span>
+        </div>
+        <div id="titlebar_buttons">
+            <button onclick="electronAPI.window.minimize()">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button onclick="electronAPI.window.maximize()">
+                <i class="far fa-square"></i>
+            </button>
+            <button id="close_window" onclick="electronAPI.window.close()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </section>
+    <script src="renderer-viewer.js"></script>
+</body>
+</html>
